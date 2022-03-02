@@ -5,6 +5,6 @@ const app = express();
 
 app.use(express.json());
 
-const port = process.env.PORT || 500;
+const port = process.env.PORT || 5000;
 
 app.listen(3001, () => console.log(`server is runnin gon port ${port}`));
