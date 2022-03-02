@@ -1,3 +1,5 @@
+import db from '../config/db.js';
+
 class Product {
 	name;
 	description;
@@ -10,6 +12,16 @@ class Product {
 		this.price = price;
 		this.countInStock = countInStock;
 		this.imageUrl = imageUrl;
+	}
+
+	static fetchAll() {
+		let sql = ' SELECT * FROM products';
+		return db.execute(sql);
+	}
+
+	static findByID(id) {
+		let sql = 'SELECT * FROM products WHERE id=(?)';
+		return db.execute(sql, [id]);
 	}
 }
 
