@@ -1,11 +1,11 @@
 import './NavBar.scss';
-import { Route, Routes, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const NavBar = () => {
 	return (
 		<nav className="navbar">
 			{/* logo */}
 			<div className="navbar__logo">
-				<h2>MERN Shopping Cart</h2>
+				<h1>MERN Shopping Cart</h1>
 			</div>
 
 			{/* links */}
@@ -13,17 +13,17 @@ const NavBar = () => {
 				<li>
 					<Link to="/cart">
 						<i className="fas fa-shopping-cart"></i>
-						Cart
+						<span>Cart</span>
 						<span className="cartlogo__badge">0</span>
 					</Link>
 				</li>
 				<li>
-					<Link to="/">
-						Shop
-						<span className="cartlogo__badge">1</span>
-					</Link>
+					<Link to="/">Shop</Link>
 				</li>
 			</ul>
+			<div className="navbar__hamburgerMenu">
+				<i className={'fas fa-bars'}></i>
+			</div>
 		</nav>
 	);
 };
