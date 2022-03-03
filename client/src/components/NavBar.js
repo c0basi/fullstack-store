@@ -1,11 +1,11 @@
 import './NavBar.scss';
 import { Link } from 'react-router-dom';
-const NavBar = () => {
+const NavBar = (props) => {
 	return (
 		<nav className="navbar">
 			{/* logo */}
 			<div className="navbar__logo">
-				<h1>MERN Shopping Cart</h1>
+				<h2>MERN Shopping Cart</h2>
 			</div>
 
 			{/* links */}
@@ -21,7 +21,7 @@ const NavBar = () => {
 					<Link to="/">Shop</Link>
 				</li>
 			</ul>
-			<div className="navbar__hamburgerMenu">
+			<div className="navbar__hamburgerMenu" onClick={props.click}>
 				<i className={'fas fa-bars'}></i>
 			</div>
 		</nav>

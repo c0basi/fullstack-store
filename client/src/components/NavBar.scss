@@ -8,9 +8,9 @@
 	z-index: 50;
 	padding: 0 1.6rem;
 	&__logo {
-		h1 {
+		h2 {
 			color: #f4f4f4; // replace all f4s with var
-			font-size: 3.9vw;
+			font-size: 3.1vw;
 			cursor: pointer;
 		}
 	}
@@ -61,7 +61,7 @@
 		height: 3rem;
 		display: none;
 		color: #f4f4f4;
-		transition: all 0.3s ease-in-out;
+		// transition: all 0.3s ease-in-out;
 		cursor: pointer;
 		&:hover {
 			color: #dd219e;
