@@ -17,7 +17,7 @@ const Layout = (props) => {
 		<Fragment>
 			<NavBar click={toggleHandler} />
 			<Backdrop show={sideToggle} click={removeToggleHandler} />
-			<SideDrawer show={sideToggle} />
+			<SideDrawer show={sideToggle} click={removeToggleHandler} />
 			<main>{props.children}</main>
 		</Fragment>
 	);
