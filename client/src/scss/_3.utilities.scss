@@ -9,7 +9,7 @@ body {
 }
 img {
 	width: 100%;
-	object-fit: contain;
+	object-fit: cover;
 }
 
 li {
@@ -22,3 +22,5 @@ a:visited {
 	color: white;
 	letter-spacing: 0.2rem;
 }
+
+$color-white: white;
