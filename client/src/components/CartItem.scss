@@ -50,7 +50,10 @@
 	}
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 520px) {
+	.cartitem {
+		grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+	}
 	.cartitem__name {
 		font-size: 1.2rem;
 	}
@@ -60,5 +63,12 @@
 	}
 	.cartitem__price {
 		font-size: 1.2rem;
+	}
+}
+
+@media screen and (max-width: 370px) {
+	.cartitem__select,
+	.cartitem__deleteBtn {
+		padding: 2px 6px;
 	}
 }
