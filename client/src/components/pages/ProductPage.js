@@ -1,5 +1,5 @@
 import './ProductPage.scss';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { getProductDetails } from '../../redux/product-actions';
@@ -9,56 +9,65 @@ const ProductPage = ({ match, history }) => {
 	const [qty, setQty] = useState(1);
 	const dispatch = useDispatch();
 
-	const prodcuDetails = useSelector((state) => state.productDetails);
-	const { product, loading, error } = prodcuDetails;
+	const productDetails = useSelector((state) => state.productDetails);
+	const { product, loading, error } = productDetails;
 	useEffect(() => {
 		if (product && match.params.id !== product.id) {
 			dispatch(getProductDetails(match.params.id));
+			console.log('dynaic url');
+			console.log(match.params.id);
 		}
-		console.log(match.params.id);
-	}, [dispatch, match]);
+	}, [dispatch, product.id, match.params.id]);
 	return (
 		<div className="productpage">
-			<div className="productpage__left">
-				<div className="productpage__left--image">
-					<img
-						src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80"
-						alt="product name"
-					/>
-				</div>
-				<div className="productpage__left--info">
-					<p className="productpage__left--info__name">Product 1</p>
-					<p className="productpage__left--info__price">Price: $49.99</p>
-					<p className="productpage__left--info__description">
-						Description: Lorem ipsum dolor sit amet consectetur adipisicing
-						elit. Adipisci, possimus eaque. Mollitia nulla reiciendis unde odit
-						eveniet illum atque ab suscipit quisquam illo? Porro deleniti quam
-						pariatur. In, vero natus.
-					</p>
-				</div>
-			</div>
-			<div className="productpage__right">
-				<div className="productpage__right__info">
-					<p>
-						Price: <span>$499.99</span>
-					</p>
-					<p>
-						Status: <span>In stock</span>
-					</p>
-					<p>
-						Qty
-						<select>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-						</select>
-					</p>
-					<p>
-						<button type="button">Add to Cart</button>
-					</p>
-				</div>
-			</div>
+			{loading ? (
+				<h2>Loading...</h2>
+			) : error ? (
+				<h2>{error}</h2>
+			) : (
+				<Fragment>
+					<div className="productpage__left">
+						<div className="productpage__left--image">
+							<img src={product.imageUrl} alt={product.name} />
+						</div>
+						<div className="productpage__left--info">
+							<p className="productpage__left--info__name">{product.name}</p>
+							<p className="productpage__left--info__price">
+								Price: ${product.price}
+							</p>
+							<p className="productpage__left--info__description">
+								{product.description}
+							</p>
+						</div>
+					</div>
+					<div className="productpage__right">
+						<div className="productpage__right__info">
+							<p>
+								Price: <span>$499.99</span>
+							</p>
+							<p>
+								Status:{' '}
+								<span>
+									{product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
+								</span>
+							</p>
+							<p>
+								Qty
+								<select value={qty} onChange={(e) => setQty(e.target.value)}>
+									{[...Array(product.countInStock).keys()].map((x) => (
+										<option key={x + 1} value={x + 1}>
+											{x + 1}
+										</option>
+									))}
+								</select>
+							</p>
+							<p>
+								<button type="button">Add to Cart</button>
+							</p>
+						</div>
+					</div>
+				</Fragment>
+			)}
 		</div>
 	);
 };
