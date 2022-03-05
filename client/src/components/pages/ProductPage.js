@@ -1,6 +1,9 @@
 import './ProductPage.scss';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ProductPage = () => {
+	const dispatch = useDispatch();
 	return (
 		<div className="productpage">
 			<div className="productpage__left">

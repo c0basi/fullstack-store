@@ -24,8 +24,18 @@ const cartSlice = createSlice({
 		},
 	},
 	extraReducers: {
-		[addToCart.pending]: (state, action) => {
-			state.cartItems = action.payload;
+		[addToCart.fulfilled]: (state, action) => {
+			const newItem = action.payload;
+			const existsItemIndex = state.cartItems.findIndex(
+				(item) => item.product === newItem.product
+			);
+			const existsItem = state.cartItems[existsItemIndex];
+
+			if (existsItem) {
+				state.cartItems[existsItemIndex] = newItem;
+			} else {
+				state.cartItems.push(newItem);
+			}
 			localStorage.setItem('cart', JSON.stringify(state.cartItems));
 		},
 	},

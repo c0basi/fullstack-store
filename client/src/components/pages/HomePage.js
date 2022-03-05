@@ -10,6 +10,7 @@ const HomePage = () => {
 	const getProducts = useSelector((state) => state.products);
 	const { products, loading, error } = getProducts;
 
+	// find a way to di that
 	useEffect(() => {
 		dispatch(listProducts());
 	}, [dispatch]);
@@ -23,7 +24,17 @@ const HomePage = () => {
 				) : error ? (
 					<h2>{error}</h2>
 				) : (
-					products.map((product) => <Product />)
+					products.map((product) => (
+						<Product
+							key={product.id}
+							id={product.id}
+							name={product.name}
+							price={product.price}
+							description={product.description}
+							countInStock={product.countInStock}
+							imageUrl={product.imageUrl}
+						/>
+					))
 				)}
 				{/* <Product />
 				<Product />
