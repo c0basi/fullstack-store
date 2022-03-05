@@ -16,7 +16,7 @@ const ProductPage = ({ match, history }) => {
 			dispatch(getProductDetails(match.params.id));
 		}
 		console.log(match.params.id);
-	}, [dispatch, product, match]);
+	}, [dispatch, match]);
 	return (
 		<div className="productpage">
 			<div className="productpage__left">

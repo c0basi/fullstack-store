@@ -18,7 +18,7 @@ export const getProductDetails = createAsyncThunk(
 			console.log(`single product info for id ${id} `);
 			const response = await axios.get(`api/products/${id}`);
 			console.log('single product info');
-			const data = response.data;
+			const data = response.data[0];
 			console.log(data);
 			return data;
 		} catch (err) {

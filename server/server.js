@@ -1,6 +1,7 @@
 import express from 'express';
 import 'dotenv/config';
-import cors from 'cors';
+import path from 'path';
+import rootDir from './util/path.js';
 
 import productRoutes from './routes/productRoutes.js';
 const app = express();
@@ -8,6 +9,16 @@ const app = express();
 app.use(express.json());
 
 app.use('/api/products', productRoutes);
+app.get('/*', function (req, res) {
+	res.sendFile(
+		path.resolve(rootDir, 'client', 'public', 'index.html'),
+		function (err) {
+			if (err) {
+				res.status(500).send(err);
+			}
+		}
+	);
+});
 
 const port = process.env.PORT || 5000;
 
