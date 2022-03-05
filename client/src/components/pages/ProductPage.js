@@ -1,9 +1,22 @@
 import './ProductPage.scss';
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-const ProductPage = () => {
+import { getProductDetails } from '../../redux/product-actions';
+import { addToCart } from '../../redux/cart-actions';
+
+const ProductPage = ({ match, history }) => {
+	const [qty, setQty] = useState(1);
 	const dispatch = useDispatch();
+
+	const prodcuDetails = useSelector((state) => state.productDetails);
+	const { product, loading, error } = prodcuDetails;
+	useEffect(() => {
+		if (product && match.params.id !== product.id) {
+			dispatch(getProductDetails(match.params.id));
+		}
+		console.log(match.params.id);
+	}, [dispatch, product, match]);
 	return (
 		<div className="productpage">
 			<div className="productpage__left">

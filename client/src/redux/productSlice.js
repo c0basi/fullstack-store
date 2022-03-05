@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getProducts } from './product-actions';
+import { getProductDetails } from './product-actions';
 
 const productSlice = createSlice({
 	name: 'products',
@@ -10,14 +10,14 @@ const productSlice = createSlice({
 		},
 	},
 	extraReducers: {
-		[getProducts.rejected]: (state, { payload }) => {
+		[getProductDetails.rejected]: (state, { payload }) => {
 			state.loading = false;
 			state.error = payload;
 		},
-		[getProducts.pending]: (state, action) => {
+		[getProductDetails.pending]: (state, action) => {
 			state.loading = true;
 		},
-		[getProducts.fulfilled]: (state, { payload }) => {
+		[getProductDetails.fulfilled]: (state, { payload }) => {
 			state.loading = false;
 			state.product = payload;
 		},

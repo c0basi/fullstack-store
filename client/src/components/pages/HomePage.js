@@ -27,11 +27,10 @@ const HomePage = () => {
 					products.map((product) => (
 						<Product
 							key={product.id}
-							id={product.id}
+							productId={product.id}
 							name={product.name}
 							price={product.price}
 							description={product.description}
-							countInStock={product.countInStock}
 							imageUrl={product.imageUrl}
 						/>
 					))
