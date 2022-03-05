@@ -17,13 +17,14 @@ const cartSlice = createSlice({
 			} else {
 				state.cartItems.push(newItem);
 			}
+			localStorage.setItem('cart', JSON.stringify(state.cartItems));
 		},
 		removeItemFromCart(state, action) {
 			state.cartItems.filter((item) => item !== action.payload);
 		},
 	},
 	extraReducers: {
-		[addToCart.fulfilled]: (state, action) => {
+		[addToCart.pending]: (state, action) => {
 			state.cartItems = action.payload;
 			localStorage.setItem('cart', JSON.stringify(state.cartItems));
 		},

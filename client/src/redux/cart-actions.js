@@ -6,6 +6,7 @@ export const addToCart = createAsyncThunk('cart/addToCart', async (id, qty) => {
 		throw new Error('Something went wrong');
 	}
 	const cartData = await response.json();
+	console.log(cartData);
 	return {
 		product: cartData.id,
 		name: cartData.name,
