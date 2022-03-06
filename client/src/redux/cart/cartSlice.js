@@ -25,6 +25,7 @@ const cartSlice = createSlice({
 				(item) => item.product !== action.payload
 			);
 			console.log(state.cartItems);
+			localStorage.setItem('cart', JSON.stringify(state.cartItems));
 		},
 	},
 	extraReducers: {

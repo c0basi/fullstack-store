@@ -26,19 +26,44 @@
 		&--description {
 			font-size: 1.2rem;
 		}
-		.info-button {
-			display: block;
-			text-align: center;
-			background: #f4f4f4;
-			width: 100%;
-			font-size: 1.5rem;
-			color: #171717;
-			border: 1px solid #171717;
-			&:hover {
-				background: #171717;
-				color: #f4f4f4;
+		.info-actions {
+			display: flex;
+			flex-direction: column;
+			.info-button,
+			.add-button {
+				text-align: center;
+				background: #f4f4f4;
+				width: 100%;
+				font-size: 1.5rem;
+				color: #171717;
+				border: 1px solid #171717;
+				margin-bottom: 0.3rem;
+				cursor: pointer;
+				&:hover {
+					background: #171717;
+					color: #f4f4f4;
+				}
+			}
+			.add-button {
+				p {
+					padding-top: 0.5rem;
+				}
 			}
 		}
+		// .info-button,
+		// .add-button {
+		// 	display: block;
+		// 	text-align: center;
+		// 	background: #f4f4f4;
+		// 	width: 100%;
+		// 	font-size: 1.5rem;
+		// 	color: #171717;
+		// 	border: 1px solid #171717;
+		// 	&:hover {
+		// 		background: #171717;
+		// 		color: #f4f4f4;
+		// 	}
+		// }
 	}
 }
 

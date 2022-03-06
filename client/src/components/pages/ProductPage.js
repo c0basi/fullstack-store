@@ -48,7 +48,7 @@ const ProductPage = ({ match, history }) => {
 					<div className="productpage__right">
 						<div className="productpage__right__info">
 							<p>
-								Price: <span>$499.99</span>
+								Price: <span>${product.price}</span>
 							</p>
 							<p>
 								Status:{' '}

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Product from '../Product';
 import { getProducts as listProducts } from '../../redux/products/product-actions';
+import { addToCart } from '../../redux/cart/cart-actions';
 
 const HomePage = () => {
 	const dispatch = useDispatch();
@@ -14,6 +15,10 @@ const HomePage = () => {
 	useEffect(() => {
 		dispatch(listProducts());
 	}, [dispatch]);
+
+	const addToCartHandler = (qty, id) => {
+		dispatch(addToCart({ qty, id }));
+	};
 
 	return (
 		<div className="homepage">
@@ -32,6 +37,7 @@ const HomePage = () => {
 							price={product.price}
 							description={product.description}
 							imageUrl={product.imageUrl}
+							onAdd={addToCartHandler.bind(null, 1, product.id)}
 						/>
 					))
 				)}

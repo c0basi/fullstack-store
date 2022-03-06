@@ -1,6 +1,7 @@
 import './Product.scss';
 import { Link } from 'react-router-dom';
-const Product = ({ productId, name, price, description, imageUrl }) => {
+
+const Product = ({ productId, name, price, description, imageUrl, onAdd }) => {
 	return (
 		<div className="product">
 			<img src={imageUrl} alt={name} />
@@ -10,9 +11,14 @@ const Product = ({ productId, name, price, description, imageUrl }) => {
 					{description.substring(0, 100)}...
 				</p>
 				<p className="product__info--price">${price}</p>
-				<Link to={`/product/${productId}`} className="info-button">
-					View
-				</Link>
+				<div className="info-actions">
+					<Link to={`/product/${productId}`} className="info-button">
+						View
+					</Link>
+					<button onClick={onAdd} className="add-button">
+						<p>Add to Cart</p>
+					</button>
+				</div>
 			</div>
 		</div>
 	);
