@@ -21,6 +21,10 @@ const CartPage = () => {
 	const getCartCount = () => {
 		return cartItems.reduce((qty, item) => +item.qty + qty, 0);
 	};
+
+	const getCartSubTotal = () => {
+		return cartItems.reduce((price, item) => item.qty * item.price + price, 0);
+	};
 	return (
 		<div className="cartpage">
 			<div className="cartpage__left">
@@ -45,7 +49,7 @@ const CartPage = () => {
 			<div className="cartpage__right">
 				<div className="cartpage__right--info">
 					<p>Subtotal ({getCartCount()}) items</p>
-					<p>$499.00</p>
+					<p>${getCartSubTotal().toFixed(2)}</p>
 				</div>
 				<div>
 					<p>
