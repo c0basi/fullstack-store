@@ -1,8 +1,8 @@
 import './CartPage.scss';
 import CartItem from '../CartItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../redux/cart-actions';
-import { cartActions } from '../../redux/cartSlice';
+import { addToCart } from '../../redux/cart/cart-actions';
+import { cartActions } from '../../redux/cart/cartSlice';
 import { Link } from 'react-router-dom';
 
 const CartPage = () => {

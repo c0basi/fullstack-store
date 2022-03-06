@@ -5,20 +5,20 @@ const cartSlice = createSlice({
 	name: 'cart',
 	initialState: { cartItems: [] },
 	reducers: {
-		addItemToCart(state, action) {
-			const newItem = action.payload;
-			const existsItemIndex = state.cartItems.findIndex(
-				(item) => item.product === newItem.product
-			);
-			const existsItem = state.cartItems[existsItemIndex];
+		// addItemToCart(state, action) {
+		// 	const newItem = action.payload;
+		// 	const existsItemIndex = state.cartItems.findIndex(
+		// 		(item) => item.product === newItem.product
+		// 	);
+		// 	const existsItem = state.cartItems[existsItemIndex];
 
-			if (existsItem) {
-				state.cartItems[existsItemIndex] = newItem;
-			} else {
-				state.cartItems.push(newItem);
-			}
-			localStorage.setItem('cart', JSON.stringify(state.cartItems));
-		},
+		// 	if (existsItem) {
+		// 		state.cartItems[existsItemIndex] = newItem;
+		// 	} else {
+		// 		state.cartItems.push(newItem);
+		// 	}
+		// 	localStorage.setItem('cart', JSON.stringify(state.cartItems));
+		// },
 		removeItemFromCart(state, action) {
 			console.log(state.cartItems);
 			state.cartItems = state.cartItems.filter(

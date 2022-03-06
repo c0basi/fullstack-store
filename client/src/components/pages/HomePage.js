@@ -3,7 +3,7 @@ import './HomePage.scss';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Product from '../Product';
-import { getProducts as listProducts } from '../../redux/product-actions';
+import { getProducts as listProducts } from '../../redux/products/product-actions';
 
 const HomePage = () => {
 	const dispatch = useDispatch();

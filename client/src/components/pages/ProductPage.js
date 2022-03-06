@@ -2,8 +2,8 @@ import './ProductPage.scss';
 import React, { useState, useEffect, Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getProductDetails } from '../../redux/product-actions';
-import { addToCart } from '../../redux/cart-actions';
+import { getProductDetails } from '../../redux/products/product-actions';
+import { addToCart } from '../../redux/cart/cart-actions';
 
 const ProductPage = ({ match, history }) => {
 	const [qty, setQty] = useState(1);
