@@ -18,6 +18,11 @@ const ProductPage = ({ match, history }) => {
 			console.log(match.params.id);
 		}
 	}, [dispatch, product.id, match.params.id]);
+
+	const addToCartHandler = () => {
+		dispatch(addToCart({ qty, id: product.id }));
+		history.push('/cart');
+	};
 	return (
 		<div className="productpage">
 			{loading ? (
@@ -62,7 +67,9 @@ const ProductPage = ({ match, history }) => {
 								</select>
 							</p>
 							<p>
-								<button type="button">Add to Cart</button>
+								<button type="button" onClick={addToCartHandler}>
+									Add to Cart
+								</button>
 							</p>
 						</div>
 					</div>

@@ -1,20 +1,50 @@
 import './CartPage.scss';
 import CartItem from '../CartItem';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../../redux/cart-actions';
+import { cartActions } from '../../redux/cartSlice';
+import { Link } from 'react-router-dom';
 
 const CartPage = () => {
+	const dispatch = useDispatch();
+	const cart = useSelector((state) => state.cart);
+	const { cartItems } = cart;
+
+	const qtyChangeHandler = (id, qty) => {
+		dispatch(addToCart({ qty, id }));
+	};
+
+	const removeItemHandler = (id) => {
+		dispatch(cartActions.removeItemFromCart(id));
+	};
+
+	const getCartCount = () => {
+		return cartItems.reduce((qty, item) => +item.qty + qty, 0);
+	};
 	return (
 		<div className="cartpage">
 			<div className="cartpage__left">
 				<h2>Shopping Cart</h2>
-
-				<CartItem />
-				<CartItem />
-				<CartItem />
-				<CartItem />
+				{cartItems.length === 0 ? (
+					<div>
+						<h3>
+							Your Cart is Empty. <Link to="/">Go back</Link>
+						</h3>
+					</div>
+				) : (
+					cartItems.map((cartItem) => (
+						<CartItem
+							key={cartItem.product}
+							item={cartItem}
+							qtyChangeHandler={qtyChangeHandler}
+							onRemove={removeItemHandler}
+						/>
+					))
+				)}
 			</div>
 			<div className="cartpage__right">
 				<div className="cartpage__right--info">
-					<p>Subtotal (0) items</p>
+					<p>Subtotal ({getCartCount()}) items</p>
 					<p>$499.00</p>
 				</div>
 				<div>

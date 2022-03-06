@@ -20,7 +20,11 @@ const cartSlice = createSlice({
 			localStorage.setItem('cart', JSON.stringify(state.cartItems));
 		},
 		removeItemFromCart(state, action) {
-			state.cartItems.filter((item) => item !== action.payload);
+			console.log(state.cartItems);
+			state.cartItems = state.cartItems.filter(
+				(item) => item.product !== action.payload
+			);
+			console.log(state.cartItems);
 		},
 	},
 	extraReducers: {
