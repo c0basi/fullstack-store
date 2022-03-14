@@ -22,4 +22,9 @@ app.get('/*', function (req, res) {
 
 const port = process.env.PORT || 5000;
 
+// heroku
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static(`${rootDir}/client/build`));
+}
+
 app.listen(port, () => console.log(`server is running on port ${port}`));
